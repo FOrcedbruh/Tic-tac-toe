@@ -1,0 +1,15 @@
+.item {
+    width: 30%;
+    height: 30%;
+    background-color: #383838;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px;
+
+    img {
+        user-select: none;
+        width: 70%;
+        height: 70%;
+    }
+}

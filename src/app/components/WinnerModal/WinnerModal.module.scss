@@ -1,0 +1,22 @@
+.modal {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    color: #eee;
+    justify-content: center;
+    align-items: center;
+    background-color: #262626;
+    border-radius: 16px;
+}
+
+.blur {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    position: absolute;
+    z-index: 99;
+}
