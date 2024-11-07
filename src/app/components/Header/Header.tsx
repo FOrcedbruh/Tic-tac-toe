@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import styles from './Header.module.scss'
 import { motion } from "framer-motion";
 import { TPlayer } from "../../App";
@@ -29,6 +29,13 @@ export const Header: FC<IHeaderProps> = ({ setValues, setPlayer, values }) => {
         setAuthUser(user)
         localStorage.setItem("auser", JSON.stringify(user))
     }
+
+
+
+    useEffect(() => {
+        authUser["board"] = values
+        localStorage.setItem("auser", JSON.stringify(authUser))
+    }, [values])
 
     return (
         <header className={styles.header}>
