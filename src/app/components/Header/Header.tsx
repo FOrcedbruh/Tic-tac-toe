@@ -8,10 +8,11 @@ import TelegramLoginButton from "../TelegramLoginButton/TelegramLoginButton";
 interface IHeaderProps {
     values: string[],
     setValues: Dispatch<SetStateAction<string[]>>,
-    setPlayer: Dispatch<SetStateAction<TPlayer>>
+    setPlayer: Dispatch<SetStateAction<TPlayer>>,
+    winner: string
 }
 
-export const Header: FC<IHeaderProps> = ({ setValues, setPlayer }) => {
+export const Header: FC<IHeaderProps> = ({ setValues, setPlayer, values }) => {
 
     const [authUser, setAuthUser] = useState<any>(null)
 
@@ -22,14 +23,17 @@ export const Header: FC<IHeaderProps> = ({ setValues, setPlayer }) => {
         setPlayer("cross")
     }
 
-    const handleBot = (user: any) => {
+    const handleBot = (data: any) => {
+        let user = data
+        user["board"] = values
         setAuthUser(user)
         localStorage.setItem("auser", JSON.stringify(user))
     }
 
     return (
         <header className={styles.header}>
-           {authUser !== null ? <div className={styles.user}><img src={authUser.photo_url} width={30} height={30} alt="" /><p>{authUser.username}</p></div> : <TelegramLoginButton
+           {authUser !== null ? <div className={styles.user}><img src={authUser.photo_url} width={30} height={30} alt="" /><p>{authUser.username}</p></div> : 
+           <TelegramLoginButton
                 botName="TicTacToeJS_bot"
                 buttonSize="medium"
                 cornerRadius={3}

@@ -41,7 +41,7 @@ const App: FC = () => {
 
     return (
         <main className="main">
-            <Header values={values} setValues={setValues} setPlayer={setPlayer}/>
+            <Header winner={winner!} values={values} setValues={setValues} setPlayer={setPlayer}/>
             <AnimatePresence>
                 {winner && <WinnerModal setWinner={setWinner} value={winner!}/>}
             </AnimatePresence>
