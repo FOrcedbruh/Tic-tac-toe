@@ -24,7 +24,7 @@ export const Header: FC<IHeaderProps> = ({ setValues, setPlayer }) => {
 
     const handleBot = (user: any) => {
         setAuthUser(user)
-        console.log(user)
+        localStorage.setItem("auser", JSON.stringify(user))
     }
 
     return (

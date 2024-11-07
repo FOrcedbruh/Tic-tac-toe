@@ -1,3 +1,5 @@
+import drawIcon from './../../assets/icons/crossAndCircle.png'
+
 
 
 const winningCombinations: Array<number[]> = [
@@ -17,6 +19,9 @@ export const findWinner = (values: string[]): string | null => {
         if (values[a] && values[a] === values[b] && values[a] === values[c]) {
             return values[a]
         }
+    }
+    if (values.every(el => el !== "")) {
+        return drawIcon
     }
 
     return null

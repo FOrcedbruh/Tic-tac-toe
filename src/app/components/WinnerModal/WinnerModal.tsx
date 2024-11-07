@@ -1,6 +1,7 @@
 import { Dispatch, FC, SetStateAction, useEffect, useRef } from "react";
 import styles from './WinnerModal.module.scss'
 import { motion } from "framer-motion";
+import drawIcon from './../../../assets/icons/crossAndCircle.png'
 
 interface IModalProps {
     value: string
@@ -28,7 +29,7 @@ export const WinnerModal: FC<IModalProps> = ({ value, setWinner }) => {
     return (
         <motion.div className={styles.blur}>
             <motion.div ref={modalRef}  initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} exit={{opacity: 0, y: 20}} className={styles.modal}>
-                <h1>Winner is</h1>
+                <h1>{value === drawIcon ? "In draw" : "Winner is"}</h1>
                 <img src={value} alt="" width={40} height={40}/>
             </motion.div>
         </motion.div>
