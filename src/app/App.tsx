@@ -11,7 +11,9 @@ export type TPlayer = "cross" | "null"
 
 const App: FC = () => {
 
-    const [values, setValues] = useState<string[]>([
+    const board: string[] = JSON.parse(localStorage.getItem("board")!)
+
+    const [values, setValues] = useState<string[]>(board || [
         "", "", "", "", "", "", "", "", ""
     ])
 

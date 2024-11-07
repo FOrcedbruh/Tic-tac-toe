@@ -25,16 +25,12 @@ export const Header: FC<IHeaderProps> = ({ setValues, setPlayer, values }) => {
 
     const handleBot = (data: any) => {
         let user = data
-        user["board"] = values
         setAuthUser(user)
         localStorage.setItem("auser", JSON.stringify(user))
     }
 
-
-
     useEffect(() => {
-        authUser["board"] = values
-        localStorage.setItem("auser", JSON.stringify(authUser))
+        localStorage.setItem("board", JSON.stringify(values))
     }, [values])
 
     return (
