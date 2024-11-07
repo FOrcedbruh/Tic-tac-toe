@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import styles from './Header.module.scss'
 import { motion } from "framer-motion";
 import { TPlayer } from "../../App";
@@ -11,7 +11,9 @@ interface IHeaderProps {
     setPlayer: Dispatch<SetStateAction<TPlayer>>
 }
 
-export const Header: FC<IHeaderProps> = ({ values, setValues, setPlayer }) => {
+export const Header: FC<IHeaderProps> = ({ setValues, setPlayer }) => {
+
+    const [authUser, setAuthUser] = useState<any>(null)
 
     const resetHandler = () => {
         setValues([
@@ -21,19 +23,20 @@ export const Header: FC<IHeaderProps> = ({ values, setValues, setPlayer }) => {
     }
 
     const handleBot = (user: any) => {
+        setAuthUser(user)
         console.log(user)
     }
 
     return (
         <header className={styles.header}>
-            <TelegramLoginButton
+           {authUser !== null ? <div className={styles.user}><img src={authUser.photo_url} width={30} height={30} alt="" /><p>{authUser.username}</p></div> : <TelegramLoginButton
                 botName="TicTacToeJS_bot"
                 buttonSize="medium"
                 cornerRadius={3}
                 usePic={false}
                 dataOnauth={handleBot}
                 className={styles.tgBtn}
-            />
+            />}
             <motion.button onClick={resetHandler} whileTap={{ y: 5}} className={styles.reset}>
                 Reset
             </motion.button>
